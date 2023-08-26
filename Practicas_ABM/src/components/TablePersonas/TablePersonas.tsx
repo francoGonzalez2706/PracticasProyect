@@ -1,4 +1,4 @@
-
+// Importación de las dependencias necesarias
 import withReactContent from 'sweetalert2-react-content';
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -14,48 +14,60 @@ import { deleteData, getData } from "../../services/GenericFetch";
 import { ModalFormulario } from "../ModalFormulario/ModalFormulario";
 import swal from 'sweetalert2'
 
+// Definición de las propiedades que recibe el componente
 interface props {
-  setShowModal: any
-  ShowModal: boolean
+  setShowModal: any;
+  ShowModal: boolean;
 }
 
 export const TablePersonas = (
   { setShowModal, ShowModal }: props
 ) => {
-  const urlapi = import.meta.env.VITE_API_URL
-  console.log(urlapi)
+  // URL de la API obtenida desde las variables de entorno
+  const urlapi = import.meta.env.VITE_API_URL;
+
+  // Estado para controlar la carga de datos
   const [Loading, setLoading] = useState(false);
+
+  // Estado para almacenar la lista de personas
   const [personas, setPersonas] = useState<persona[]>([]);
+
+  // Estado para la edición de una persona
   const [personaEdit, setPersonaEdit] = useState<persona>();
+
+  // Estado para controlar si se está editando
   const [editing, setEditing] = useState(false);
 
+  // Función para cerrar el modal de edición/agregación
   function handleClose() {
     setShowModal(false);
     setEditing(false);
     setPersonaEdit(undefined);
   }
 
+  // Función para obtener los datos de personas desde la API
   async function getDataPersonas() {
     setLoading(true);
     await getData<persona[]>(urlapi + 'api/personas')
-      .then((persona) => {
-        setPersonas(persona);
-        setLoading(false)
-      })
-
+      .then((personaData) => {
+        setPersonas(personaData);
+        setLoading(false);
+      });
   }
 
-
+  // Carga inicial de datos al montar el componente
   useEffect(() => {
     getDataPersonas();
   }, []);
 
+  // Configuración de SweetAlert2 con React
   const MySwal = withReactContent(swal);
 
+  // Manejo de eliminación de persona
   const handleDelete = (id: number) => {
     MySwal.fire({
       title: '¿Estás seguro?',
-      text: 'Esta operacion es irreversible',
+      text: 'Esta operación es irreversible',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
@@ -70,15 +82,17 @@ export const TablePersonas = (
     });
   }
 
+  // Opciones de formato de fecha
   const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
 
+  // Función para formatear fechas
   const dateFormater = (dateJava: string) => {
     const date = new Date(dateJava);
-    const formatedDate = date.toLocaleDateString('es-AR', options)
-    return formatedDate
+    const formatedDate = date.toLocaleDateString('es-AR', options);
+    return formatedDate;
   }
 
-
+  // Renderizado del componente TablePersonas
   return (
     <div>
       <TableContainer component={Paper}>

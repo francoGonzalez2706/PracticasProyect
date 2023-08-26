@@ -8,6 +8,7 @@ import { Contacto } from "./components/Contacto/Contacto";
 
 
 function App() {
+  //Rutas de nuestra aplicacion 
   return (
     <BrowserRouter>
       <NavBar />

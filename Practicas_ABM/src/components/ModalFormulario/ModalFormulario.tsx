@@ -1,3 +1,4 @@
+// Importación de las dependencias necesarias
 import { Button, Modal } from "react-bootstrap";
 import * as Yup from "yup";
 import { Form, Formik } from "formik";
@@ -5,34 +6,37 @@ import TextFieldValue from "../TextFildValue/TextFildValue";
 import { persona } from "../../types/persona";
 import { postData, putData } from "../../services/GenericFetch";
 
-
+// Definición de las propiedades que recibe el componente
 interface props {
   showModal: boolean;
   handleClose: () => void;
   editing?: boolean;
   persona?: persona;
-  getPersonas: Function
+  getPersonas: Function;
 }
 
+// Definición del componente ModalFormulario
 export const ModalFormulario = ({
   showModal,
   handleClose,
   editing,
   persona,
-  getPersonas
+  getPersonas,
 }: props) => {
-
+  // Valores iniciales para el formulario
   const initialValues: persona = {
-    phoneNumber: '',
-    adress: '',
-    birthdate: '' as any,
-    email: '',
-    firstName: '',
-    lastName: ''
+    phoneNumber: "",
+    adress: "",
+    birthdate: "" as any,
+    email: "",
+    firstName: "",
+    lastName: "",
   };
 
-  const urlapi = import.meta.env.VITE_API_URL
+  // URL de la API obtenida desde las variables de entorno
+  const urlapi = import.meta.env.VITE_API_URL;
 
+  // Renderizado del componente ModalFormulario
   return (
     <div>
       <Modal

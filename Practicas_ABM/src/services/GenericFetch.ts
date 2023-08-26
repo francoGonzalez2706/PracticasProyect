@@ -1,17 +1,17 @@
+// Función generica para obtener datos mediante una solicitud GET
 export async function getData<T>(path: string): Promise<T> {
   try {
     const response = await fetch(`${path}`);
     if (!response.ok) {
       throw Error(response.statusText);
     }
-    return response.json();
+    return response.json(); // Retorna los datos en formato JSON
   } catch (error) {
-    return Promise.reject(error);
+    return Promise.reject(error); // Rechaza la promesa con el error
   }
 }
 
-//si el metodo es post, data no tiene que tener id
-//si el metodo es put, data tiene que tener id
+// Función generica para enviar datos mediante una solicitud POST
 export async function postData<T>(path: string, data: T): Promise<T> {
   try {
     const response = await fetch(`${path}`, {
@@ -20,17 +20,18 @@ export async function postData<T>(path: string, data: T): Promise<T> {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data), // Convierte los datos a JSON y los envía en el cuerpo de la solicitud
     });
     if (!response.ok) {
       throw Error(response.statusText);
     }
-    return response.json();
+    return response.json(); // Retorna los datos en formato JSON
   } catch (error) {
-    return Promise.reject(error);
+    return Promise.reject(error); // Rechaza la promesa con el error
   }
 }
 
+// Función generica para actualizar datos mediante una solicitud PUT
 export async function putData<T>(path: string, data: T): Promise<T> {
   try {
     const response = await fetch(`${path}`, {
@@ -39,20 +40,20 @@ export async function putData<T>(path: string, data: T): Promise<T> {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data), // Convierte los datos a JSON y los envía en el cuerpo de la solicitud
     });
-   
-    
+
     if (!response.ok) {
       throw Error(response.statusText);
     }
-    return response.json();
+    return response.json(); // Retorna los datos en formato JSON
   } catch (error) {
-    return Promise.reject(error);
+    return Promise.reject(error); // Rechaza la promesa con el error
   }
 }
 
-export async function deleteData<T>(path: string) {
+// Función generica para eliminar datos mediante una solicitud DELETE
+export async function deleteData(path: string) {
   try {
     const response = await fetch(`${path}`, {
       method: "DELETE",
@@ -64,6 +65,6 @@ export async function deleteData<T>(path: string) {
       throw Error(response.statusText);
     }
   } catch (error) {
-    console.error(error);
+    console.error(error); // Imprime el error en la consola
   }
 }

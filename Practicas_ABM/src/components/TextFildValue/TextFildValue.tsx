@@ -13,6 +13,8 @@ const TextFieldValue = ({
   type,
   placeholder,
 }: props) => {
+
+  // componente para crear los input de un formulario con formik
   return (
     <div className="mt-2" style={{ display: "flex", flexDirection: "column" }}>
       <div
