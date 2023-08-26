@@ -85,7 +85,7 @@ export const ModalFormulario = ({
               handleClose();
             }}
           >
-            {(Formik) => (
+            {() => (
               <>
                 <Form autoComplete="off" className="form-obraAlta">
                   <div className="container_Form_Ingredientes">

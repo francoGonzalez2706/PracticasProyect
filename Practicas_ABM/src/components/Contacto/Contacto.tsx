@@ -1,10 +1,7 @@
-import { useNavigate } from "react-router";
-import { Row } from "react-bootstrap";
 
 import './Contacto.css'
 
 export const Contacto = () => {
-  const navigate = useNavigate();
   return (
     <div>
       <div className="AboutUs">
@@ -26,7 +23,6 @@ export const Contacto = () => {
               <span> franco.gonzalez.reale.276@gmail.com</span>
               <a href="http://www.linkedin.com/in/franco-gonzalez-reale/" target="_blank" rel="noopener noreferrer">www.linkedin.com/in/franco-gonzalez-reale/</a>
               <a href="https://github.com/francoGonzalez2706" target="_blank" rel="noopener noreferrer">https://github.com/francoGonzalez2706/</a>
-
             </div>
           </article>
         </div>
