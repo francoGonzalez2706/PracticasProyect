@@ -99,13 +99,13 @@ export const TablePersonas = (
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="center">id</TableCell>
+              <TableCell align="center">Id</TableCell>
               <TableCell align="center">Nombre</TableCell>
               <TableCell align="center">Apellido</TableCell>
-              <TableCell align="center">Mail</TableCell>
-              <TableCell align="center">Numero de Telefono</TableCell>
-              <TableCell align="center">Dia de Nacimiento</TableCell>
-              <TableCell align="center">acciones</TableCell>
+              <TableCell align="center">Correo electrónico</TableCell>
+              <TableCell align="center">Número de teléfono</TableCell>
+              <TableCell align="center">Fecha de nacimiento</TableCell>
+              <TableCell align="center">Acciones</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

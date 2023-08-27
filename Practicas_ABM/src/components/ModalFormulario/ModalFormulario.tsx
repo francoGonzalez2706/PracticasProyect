@@ -36,6 +36,8 @@ export const ModalFormulario = ({
   // URL de la API obtenida desde las variables de entorno
   const urlapi = import.meta.env.VITE_API_URL;
 
+  const actualDate: string = new Date().toISOString().split("T")[0]
+
   // Renderizado del componente ModalFormulario
   return (
     <div>
@@ -49,21 +51,21 @@ export const ModalFormulario = ({
       >
         <Modal.Header closeButton>
           {editing ? (
-            <Modal.Title>Editar un Articulo:</Modal.Title>
+            <Modal.Title>Editar una persona:</Modal.Title>
           ) : (
-            <Modal.Title>Añadir un Articulo:</Modal.Title>
+            <Modal.Title>Añadir una persona:</Modal.Title>
           )}
         </Modal.Header>
         <Modal.Body>
           <Formik
             validationSchema={
               Yup.object({
-                phoneNumber: Yup.string().required("campo Requerido"),
-                adress: Yup.string().required("campo Requerido"),
-                birthdate: Yup.date().required("campo Requerido"),
-                email: Yup.string().email().required("campo Requerido"),
-                firstName: Yup.string().required("campo Requerido"),
-                lastName: Yup.string().required("campo Requerido")
+                phoneNumber: Yup.string().required("Campo requerido"),
+                adress: Yup.string().required("Campo requerido"),
+                birthdate: Yup.date().required("Campo requerido").max(actualDate, 'La fecha no puede ser mayor a la fecha actual'),
+                email: Yup.string().email("Tiene que ser un correo electrónico válido").required("Campo requerido"),
+                firstName: Yup.string().required("Campo requerido"),
+                lastName: Yup.string().required("Campo requerido")
               })
             }
             initialValues={persona ? persona : initialValues}
@@ -103,29 +105,29 @@ export const ModalFormulario = ({
                     />
 
                     <TextFieldValue
-                      label="Mail:"
+                      label="Correo electrónico:"
                       name="email"
                       type="text"
                       placeholder="Mail"
                     />
 
                     <TextFieldValue
-                      label="Direccion:"
+                      label="Dirección:"
                       name="adress"
                       type="text"
                       placeholder="Direccion"
                     />
                     <TextFieldValue
-                      label="Numero de Telefono:"
+                      label="Número de teléfono:"
                       name="phoneNumber"
                       type="number"
-                      placeholder="Numero de Telefono"
+                      placeholder="Numero de telefono"
                     />
                     <TextFieldValue
-                      label="Fecha de Nacimiento:"
+                      label="Fecha de nacimiento:"
                       name="birthdate"
                       type="date"
-                      placeholder="Fecha de Nacimiento"
+                      placeholder="Fecha de nacimiento"
                     />
                   </div>
                   <div className="d-flex justify-content-end">
@@ -139,6 +141,6 @@ export const ModalFormulario = ({
           </Formik>
         </Modal.Body>
       </Modal>
-    </div>
+    </div >
   )
 }
