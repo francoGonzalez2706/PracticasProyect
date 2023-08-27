@@ -83,12 +83,12 @@ export const TablePersonas = (
   }
 
   // Opciones de formato de fecha
-  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  const dateFormatOptions: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
 
   // Función para formatear fechas
   const dateFormater = (dateJava: string) => {
     const date = new Date(dateJava);
-    const formatedDate = date.toLocaleDateString('es-AR', options);
+    const formatedDate = date.toLocaleDateString('es-AR', dateFormatOptions);
     return formatedDate;
   }
 
@@ -118,10 +118,7 @@ export const TablePersonas = (
                     <TableCell align="center">{row.lastName} </TableCell>
                     <TableCell align="center">{row.email} </TableCell>
                     <TableCell align="center">{row.phoneNumber} </TableCell>
-                    <TableCell align="center">{
-
-                      dateFormater(row.birthdate)
-                    } </TableCell>
+                    <TableCell align="center">{dateFormater(row.birthdate)} </TableCell>
                     <TableCell align="center">
                       <div
                         style={{
@@ -132,7 +129,7 @@ export const TablePersonas = (
                       >
                         <i
                           className="fa-solid fa-trash"
-                          style={{ cursor: "pointer" }}
+                          style={{ cursor: "pointer", color: '#ff2040' }}
                           onClick={() => {
                             if (row.id)
                               handleDelete(row.id);

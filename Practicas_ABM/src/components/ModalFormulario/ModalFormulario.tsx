@@ -71,7 +71,7 @@ export const ModalFormulario = ({
             initialValues={persona ? persona : initialValues}
             enableReinitialize={true}
             onSubmit={async (values) => {
-              console.log(values)
+
               if (editing) {
                 await putData(
                   urlapi + `api/personas/${persona?.id}`,

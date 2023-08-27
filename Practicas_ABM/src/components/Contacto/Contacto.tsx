@@ -6,7 +6,7 @@ export const Contacto = () => {
     <div>
       <div className="AboutUs">
         <article>
-          <h3 style={{ textAlign: "center" }}>Trabajo Practicas Profecionales</h3>
+          <h3 style={{ textAlign: "center" }}>Trabajo practicas profesionales</h3>
         </article>
         <div className="integrantes-wrapper">
           <article>
@@ -20,6 +20,7 @@ export const Contacto = () => {
               <span> HTML </span>
               <span> CSS </span>
               <span> SCSS </span>
+              <h1>Contacto:</h1>
               <span> franco.gonzalez.reale.276@gmail.com</span>
               <a href="http://www.linkedin.com/in/franco-gonzalez-reale/" target="_blank" rel="noopener noreferrer">www.linkedin.com/in/franco-gonzalez-reale/</a>
               <a href="https://github.com/francoGonzalez2706" target="_blank" rel="noopener noreferrer">https://github.com/francoGonzalez2706/</a>
